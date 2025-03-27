@@ -1,17 +1,25 @@
 {
   "name": "namste-react",
   "version": "1.0.0",
-  "description": "learning-react",
+  "description": "Namsate-react",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishalawana/namaste-react.git"
+  },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "parcel": "^2.14.2"
+  "bugs": {
+    "url": "https://github.com/vishalawana/namaste-react/issues"
   },
+  "homepage": "https://github.com/vishalawana/namaste-react#readme",
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.14.2"
   }
 }
