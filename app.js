@@ -1,21 +1,61 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-const parent = React.createElement("div", { id: "parent" }, [
-    React.createElement("div", { id: "child" }, [
-      React.createElement("h1", { key: "h1-1" }, "I'm an H1 tag"),
-      React.createElement("h2", { key: "h2-1" }, "I'm an H2 tag"),
-    ]),
-    React.createElement("div", { id: "child2" }, [
-      React.createElement("h1", { key: "h1-2" }, "I'm an H1 tag"),
-      React.createElement("h2", { key: "h2-2" }, "I'm an H2 tag"),
-    ]),
-  ]);
-   
 
-   const jsxPara = (
-    <p id="jsxPara">This is jsx Para that i created in app.js</p>
-   );
-   console.log(jsxPara)
+
+const Header = () => (
+  <div className="header">
+    <div className="logo-container">
+      <img
+        className="logo"
+        src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=fast-food&sf=&txt_keyword=All"
+        alt="Logo"
+      />
+    </div>
+    <div className="nav-items">
+      <ul>
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Contact Us</li>
+        <li>Cart</li>
+      </ul>
+    </div>
+  </div>
+ );
+ const RestaurantCard = ({resName = 'NA', cuisine = 'NA'}) => {
+  // console.log(props);
+  return (
+  <div className="restaurant-card">
+    <img className="restaurant-logo" src="https://www.bdtask.com/blog/assets/plugins/ckfinder/core/connector/php/uploads/images/quick-pancake.webp"
+       alt="res-logo"
+     />
+     <h3>{resName }</h3>
+     <h4>{cuisine}</h4>
+  </div>
+ );
+}
+ const Body = () => (
+  <div className="body">
+    <div className="search">search</div>
+    <div className="restaurant-container">
+      <RestaurantCard
+      resName="Meghna Food"
+      cuisine="Biryani, North Indian, Asian"
+      />
+      <RestaurantCard resName="KFC" cuisine="Chicken, Special Indian, Asian" />
+      <RestaurantCard />
+      <RestaurantCard />
+      <RestaurantCard />
+      <RestaurantCard />
+    </div>
+  </div>
+ )
+ const AppLayout = () =>{
+  return(
+    <div className="app">
+      <Header/>
+      <Body/>
+    </div>
+  )
+ }
 const root = ReactDOM.createRoot(document.querySelector('#root'));
-root.render(parent);
-   
+root.render(<AppLayout/>);
