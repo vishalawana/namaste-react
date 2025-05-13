@@ -4,25 +4,13 @@ import "./index.css";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
 
-/**
- * Header
- *  - Logo
- *  - Nav Items
- * Body
- *  - Search
- *  - RestaurantContainer
- *    - RestaurantCard
- *      - Img
- *      - Name of Restaurant, Star Rating, cuisine, delivery time
- * Footer
- *  - Copyright
- *  - Links
- *  - Address
- *  - Contact
- */
-
-const App = () => {
+// Layout component that will be present on all pages
+const AppLayout = () => {
   return (
     <div className="app">
       <Header />
@@ -32,5 +20,30 @@ const App = () => {
   );
 };
 
+// Main page content
+const Home = () => {
+  return <Body />;
+};
+
+const appRouter = createBrowserRouter([
+      {
+        path: "/",
+        element: <AppLayout/>,
+        errorElement: <Error/>
+      },
+      {
+        path: "/",
+        element: <AppLayout/>
+      },
+      {
+        path: "/about",
+        element: <About />
+      },
+      {
+        path: "/contact",
+        element: <Contact />
+      }
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(<RouterProvider router={appRouter} />);
