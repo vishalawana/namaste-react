@@ -15,6 +15,7 @@ const RestaurantCard = (props) => {
     cuisines,
     costForTwo,
     deliveryTime,
+    id
   } = resData?.info;
 
   return (

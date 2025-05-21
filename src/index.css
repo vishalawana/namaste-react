@@ -5,10 +5,17 @@
     box-sizing: border-box;
     overflow-x: hidden;
   }
+  body, html {
+    overflow-x: hidden;
+  }
   
   body {
     background-color: #f1f1f1;
   }
+  .body {
+    margin-top: 120px; /* pushes content below fixed header */
+  }
+  
   
   /* CSS for scroll-bar */
   /* width */
