@@ -17,7 +17,7 @@ const RestaurantCard = (props) => {
     deliveryTime,
     id
   } = resData?.info;
-
+console.log(id);
   return (
     <div className="restaurant-card">
       <img
@@ -26,6 +26,7 @@ const RestaurantCard = (props) => {
         className="restaurant-logo"
       />
       <div className="restaurant-details">
+        <p>{id}</p>
         <h3 className="restaurant-name">
           {name.slice(0, 22)}
           {name.length > 22 ? "..." : ""}
