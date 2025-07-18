@@ -17,7 +17,6 @@ const RestaurantCard = (props) => {
     deliveryTime,
     id
   } = resData?.info;
-console.log(id);
   return (
     <div className="restaurant-card">
       <img

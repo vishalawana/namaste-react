@@ -9,6 +9,10 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu"
+// import Grocery from "./components/Grocery";
+
+
+const Grocery = React.lazy(() => import("./components/Grocery"));
 
 // Layout component that wraps all pages
 const AppLayout = () => {
@@ -46,6 +50,10 @@ const appRouter = createBrowserRouter([
       {
         path: "contact", // ✅ No leading slash needed
         element: <Contact />
+      },
+      {
+        path: "grocery", // ✅ No leading slash needed
+        element: <Grocery />
       },
       {
         path: "restaurant/:resId",
