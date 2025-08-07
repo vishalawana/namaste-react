@@ -1,20 +1,21 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import RestaurantMenu from "./components/RestaurantMenu"
-// import Grocery from "./components/Grocery";
+import RestaurantMenu from "./components/RestaurantMenu";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
+// ✅ Lazy load the Grocery component
+const Grocery = lazy(() => import("./components/Grocery"));
+console.log(Grocery);
 
-const Grocery = React.lazy(() => import("./components/Grocery"));
-
-// Layout component that wraps all pages
+// ✅ Layout component that wraps around all pages
 const AppLayout = () => {
   return (
     <div className="app">
@@ -27,12 +28,12 @@ const AppLayout = () => {
   );
 };
 
-
-// Main/home content
+// ✅ Home component (main content)
 const Home = () => {
   return <Body />;
 };
 
+// ✅ Define all routes
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -41,28 +42,32 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home /> // Homepage
+        element: <Home />
       },
       {
-        path: "about", // ✅ No leading slash needed
+        path: "about",
         element: <About />
       },
       {
-        path: "contact", // ✅ No leading slash needed
+        path: "contact",
         element: <Contact />
       },
       {
-        path: "grocery", // ✅ No leading slash needed
-        element: <Grocery />
+        path: "grocery",
+        element: (
+          <Suspense fallback={<h2>Loading Grocery...</h2>}>
+            <Grocery />
+          </Suspense>
+        )
       },
       {
         path: "restaurant/:resId",
-        element: <RestaurantMenu/>
+        element: <RestaurantMenu />
       }
     ]
   }
 ]);
 
-
+// ✅ Mount the router to the DOM
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);
