@@ -1,12 +1,6 @@
+import { IMG_CDN_URL } from '../utils/constants';
 
-import {IMG_CDN_URL} from '../utils/constants';
-// console.log(IMG_CDN_URL);
-
-const RestaurantCard = (props) => {
-  // console.log(props);
-  const { resData } = props;  // const resData = props.resData;
-  // console.log(resData);
-
+const RestaurantCard = ({ resData }) => {
   const {
     cloudinaryImageId,
     name,
@@ -17,31 +11,30 @@ const RestaurantCard = (props) => {
     deliveryTime,
     id
   } = resData?.info;
+
   return (
-    <div className="restaurant-card">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden w-64 hover:scale-105 transition-transform">
       <img
-        src={IMG_CDN_URL + Math.floor(Math.random()*10+1)+25}
+        src={IMG_CDN_URL + Math.floor(Math.random() * 10 + 1) + 25}
         alt={name}
-        className="restaurant-logo"
+        className="w-full h-40 object-cover"
       />
-      <div className="restaurant-details">
-        <p>{id}</p>
-        <h3 className="restaurant-name">
-          {name.slice(0, 22)}
-          {name.length > 22 ? "..." : ""}
+      <div className="p-4">
+        <p className="text-xs text-gray-400">ID: {id}</p>
+        <h3 className="text-lg font-semibold text-gray-800 truncate">
+          {name}
         </h3>
-        <div className="esa-rating">
-          <h4 className="rating">
-            <span>{avgRating}</span>
-          </h4>
-          <h4>{costForTwo}</h4>
-          <h4>{deliveryTime} mins</h4>
+
+        <div className="flex items-center justify-between mt-2 text-sm text-gray-600">
+          <span className="bg-green-500 text-white px-2 py-0.5 rounded text-xs">{avgRating} ★</span>
+          <span>{costForTwo}</span>
+          <span>{deliveryTime} mins</span>
         </div>
-        <p className="cousine">
-          {cuisines.join(", ").slice(0, 30)}
-          {cuisines.join(", ").length > 30 ? "..." : ""}
+
+        <p className="mt-2 text-gray-500 text-sm truncate">
+          {cuisines.join(", ")}
         </p>
-        <p className="location">{areaName}</p>
+        <p className="text-gray-400 text-xs">{areaName}</p>
       </div>
     </div>
   );

@@ -20,13 +20,14 @@ const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <div className="body">
+      <div className="body pt-20">
         <Outlet />
       </div>
       <Footer />
     </div>
   );
 };
+
 
 // ✅ Home component (main content)
 const Home = () => {

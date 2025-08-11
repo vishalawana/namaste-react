@@ -1,18 +1,23 @@
-import {LINKEDIN_URL} from "../utils/constants";
+import { LINKEDIN_URL } from "../utils/constants";
 
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <div className="footer">
+    <div className="bg-gray-900 text-white text-center py-4 mt-10">
       Created By
-      <span>❤️</span>
-      <a href={LINKEDIN_URL} target="_blank">
+      <span className="mx-1">❤️</span>
+      <a
+        href={LINKEDIN_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 hover:text-blue-300 underline"
+      >
         Vishal Awana
       </a>
-      <span>&copy;</span>
+      <span className="mx-1">&copy;</span>
       {year}
-      <strong>
-        Tasty <span>Trails</span>
+      <strong className="ml-1">
+        Tasty <span className="text-yellow-400">Trails</span>
       </strong>
     </div>
   );
