@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -8,6 +8,8 @@ const Body = () => {
   const [resList, setResList] = useState([]);
   const [originalList, setOriginalList] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -38,7 +40,7 @@ const Body = () => {
   }
 
   return resList.length === 0 ? (
-    <Shimmer count={18} />
+    <Shimmer count={12} />
   ) : (
     <div className="max-w-7xl mx-auto px-6 py-4">
       {/* Search Section */}
@@ -93,6 +95,7 @@ const Body = () => {
             key={restaurant.info.id}
             className="block"
           >
+            {restaurant.info.isOpen ? <RestaurantCardPromoted resData={restaurant} /> :  <RestaurantCard resData={restaurant} /> }
             <RestaurantCard resData={restaurant} />
           </Link>
         ))}

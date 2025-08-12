@@ -13,7 +13,6 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 // ✅ Lazy load the Grocery component
 const Grocery = lazy(() => import("./components/Grocery"));
-console.log(Grocery);
 
 // ✅ Layout component that wraps around all pages
 const AppLayout = () => {
