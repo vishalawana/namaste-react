@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
@@ -10,13 +10,27 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import UserContext from "./utils/UserContext";
+import { useEffect, useState} from "react";
 
 // ✅ Lazy load the Grocery component
 const Grocery = lazy(() => import("./components/Grocery"));
 
 // ✅ Layout component that wraps around all pages
 const AppLayout = () => {
+
+  const [userName, setUserName] = useState();
+  useEffect(()=>{
+    // make an api call
+    const data = {
+      name:"vishal awana"
+    };
+    setUserName(data.name)
+  },[])
+
+
   return (
+    <UserContext.Provider value={{ loggedInUser : userName}}>
     <div className="app">
       <Header />
       <div className="body pt-20">
@@ -24,6 +38,7 @@ const AppLayout = () => {
       </div>
       <Footer />
     </div>
+    </UserContext.Provider>
   );
 };
 
