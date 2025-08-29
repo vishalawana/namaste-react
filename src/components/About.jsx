@@ -11,7 +11,7 @@ class About extends Component {
           right to your doorstep. Our mission is to make your dining experience easy, fast, and
           delightful.
         </p>
-        <div>
+        <div> 
           <UserContext.Consumer>
             {(data)=>data.loggedInUser}
           </UserContext.Consumer>
